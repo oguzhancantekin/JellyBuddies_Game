@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9005a3aaacd849e40b1df07ff9f5c94d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scoreTextTMP: {fileID: 366652104750843751, guid: 4dc22fe8b385f2c49aae4aed6357eae8, type: 3}
+  - scoreTextLegacy: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
