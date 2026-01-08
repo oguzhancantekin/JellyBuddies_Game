@@ -13,8 +13,13 @@ public class ScoreManager : MonoBehaviour
     [Header("Score Settings")]
     [SerializeField] private int currentScore = 0;
     
+    [Header("Audio Settings")]
+    public AudioClip collectSound;
+    private AudioSource audioSource;
+    
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         UpdateScoreDisplay();
     }
     
@@ -26,6 +31,13 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += amount;
         UpdateScoreDisplay();
+        
+        // Play collect sound
+        if (audioSource != null && collectSound != null)
+        {
+            audioSource.PlayOneShot(collectSound);
+        }
+        
         Debug.Log($"Score increased by {amount}. Total score: {currentScore}");
     }
     

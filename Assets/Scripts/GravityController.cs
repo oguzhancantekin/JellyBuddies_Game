@@ -33,6 +33,10 @@ public class GravityController : MonoBehaviour
     [Tooltip("Main camera - will auto-assign if not set")]
     [SerializeField] private Camera mainCamera;
     
+    [Header("Touch Effect")]
+    [Tooltip("Touch effect prefab to spawn at touch position")]
+    [SerializeField] private GameObject touchEffectPrefab;
+    
     // Internal variables
     private bool isTouching = false;
     private Vector2 touchWorldPosition;
@@ -112,6 +116,9 @@ public class GravityController : MonoBehaviour
                 // Just started touching
                 isTouching = true;
                 ActivateAntigravity();
+                
+                // Spawn touch effect at touch position
+                SpawnTouchEffect(touchWorldPosition);
             }
         }
         else
@@ -122,6 +129,18 @@ public class GravityController : MonoBehaviour
                 isTouching = false;
                 ActivateNormalGravity();
             }
+        }
+    }
+    
+    /// <summary>
+    /// Spawns a touch effect at the given world position
+    /// </summary>
+    private void SpawnTouchEffect(Vector2 worldPosition)
+    {
+        if (touchEffectPrefab != null)
+        {
+            Vector3 spawnPosition = new Vector3(worldPosition.x, worldPosition.y, 0f);
+            Instantiate(touchEffectPrefab, spawnPosition, Quaternion.identity);
         }
     }
     
